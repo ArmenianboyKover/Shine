@@ -1,10 +1,11 @@
-package com.example.shine
+package com.example.shine.playlist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
+import com.example.shine.R
 
 class PlaylistAdapter : RecyclerView.Adapter<PlaylistViewHolder>() {
     private var playlists = listOf<Playlist>()
