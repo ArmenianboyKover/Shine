@@ -1,18 +1,36 @@
 package com.example.shine
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.example.shine.playlist.PlaylistFragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportFragmentManager.commit {
-            setReorderingAllowed(true)
-            add<PlaylistFragment>(R.id.fragment_container)
+
+        loadFragment(SongsFragment())
+        val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        navigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.songs -> {
+                    loadFragment(SongsFragment())
+                    true
+                }
+                R.id.playlists -> {
+                    loadFragment(PlaylistFragment())
+                    true
+                }
+                else -> false
+            }
         }
+    }
+
+    private fun loadFragment(fragment: Fragment) {
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_container, fragment)
+        transaction.commit()
     }
 }

@@ -1,9 +1,10 @@
-package com.example.shine
+package com.example.shine.playlist
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shine.R
 
 class PlaylistFragment : Fragment(R.layout.fragment_playlist) {
 
