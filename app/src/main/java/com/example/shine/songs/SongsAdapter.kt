@@ -8,7 +8,7 @@ import coil.transform.RoundedCornersTransformation
 import com.example.shine.R
 
 class SongsAdapter : RecyclerView.Adapter<SongViewHolder>() {
-    private var songs = listOf<PlayListSong>()
+    private var songs = listOf<Song>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false)
@@ -24,7 +24,7 @@ class SongsAdapter : RecyclerView.Adapter<SongViewHolder>() {
         }
     }
 
-    fun updateSong(list: List<PlayListSong>) {
+    fun updateSong(list: List<Song>) {
         songs = list
         notifyDataSetChanged()
     }
