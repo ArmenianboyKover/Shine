@@ -3,8 +3,8 @@ package com.example.shine
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import com.example.shine.Songs.SongsFragment
 import com.example.shine.playlist.PlaylistFragment
+import com.example.shine.songs.SongsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
