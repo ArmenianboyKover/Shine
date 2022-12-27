@@ -14,37 +14,37 @@ class SongsFragment : Fragment(R.layout.fragment_songs) {
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = SongsAdapter()
         recycler.adapter = adapter
-        adapter.updateSong(getSong())
+        adapter.updateSong(getSongs())
     }
 
-    fun getSong(): List<PlayListSongs> {
+    fun getSongs(): List<PlayListSong> {
         return listOf(
-            PlayListSongs(
+            PlayListSong(
                 song = "vasya",
                 playlist = "leha",
                 image = "https://incrussia.ru/upload/resized/572c151849d7cadfd7cbccb840a84c4a.jpg"
             ),
-            PlayListSongs(
+            PlayListSong(
                 song = "Leha",
                 playlist = "arbsuz",
                 image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlthFAPI9r1bCPSHXz3Cz0dCvMGtdgypv18Q&usqp=CAU"
             ),
-            PlayListSongs(
+            PlayListSong(
                 song = "Leha",
                 playlist = "arbsuz",
                 image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlthFAPI9r1bCPSHXz3Cz0dCvMGtdgypv18Q&usqp=CAU"
             ),
-            PlayListSongs(
+            PlayListSong(
                 song = "Leha",
                 playlist = "arbssduz",
                 image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlthFAPI9r1bCPSHXz3Cz0dCvMGtdgypv18Q&usqp=CAU"
             ),
-            PlayListSongs(
+            PlayListSong(
                 song = "Lesdha",
                 playlist = "arsdsbsuz",
                 image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlthFAPI9r1bCPSHXz3Cz0dCvMGtdgypv18Q&usqp=CAU"
             ),
-            PlayListSongs(
+            PlayListSong(
                 song = "Lesdsha",
                 playlist = "arbsdsdsuz",
                 image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlthFAPI9r1bCPSHXz3Cz0dCvMGtdgypv18Q&usqp=CAU"
