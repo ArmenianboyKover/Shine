@@ -2,13 +2,13 @@ package com.example.shine.songs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import com.example.shine.R
 
-class SongsAdapter : RecyclerView.Adapter<SongViewHolder>() {
-    private var songs = listOf<Song>()
+class SongsAdapter : ListAdapter<Song, SongViewHolder>(SongDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SongViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_song, parent, false)
@@ -16,19 +16,21 @@ class SongsAdapter : RecyclerView.Adapter<SongViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
-        val song = songs[position]
+        val song = currentList[position]
         holder.songs.text = song.song
         holder.playlist.text = song.playlist
         holder.image.load(song.image) {
             transformations(RoundedCornersTransformation(20f))
         }
     }
+}
 
-    fun updateSong(list: List<Song>) {
-        songs = list
-        notifyDataSetChanged()
+class SongDiffUtil : DiffUtil.ItemCallback<Song>() {
+    override fun areItemsTheSame(oldItem: Song, newItem: Song): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun getItemCount(): Int = songs.size
-
+    override fun areContentsTheSame(oldItem: Song, newItem: Song): Boolean {
+        return oldItem == newItem
+    }
 }
