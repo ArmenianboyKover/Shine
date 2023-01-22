@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shine.MainActivity
 import com.example.shine.R
+import com.example.shine.playlist_details.PlaylistDetailsFragment
 import kotlinx.coroutines.launch
 
 class PlaylistFragment : Fragment(R.layout.fragment_playlists) {
@@ -17,7 +19,9 @@ class PlaylistFragment : Fragment(R.layout.fragment_playlists) {
         super.onViewCreated(view, savedInstanceState)
 
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = PlaylistAdapter()
+        val adapter = PlaylistAdapter {
+            (activity as MainActivity).loadFragment(PlaylistDetailsFragment())
+        }
         recycler.adapter = adapter
 
         lifecycleScope.launch {
