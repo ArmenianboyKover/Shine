@@ -17,6 +17,7 @@ class SongsAdapter : ListAdapter<Song, SongViewHolder>(SongDiffUtil()) {
 
     override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
         val song = currentList[position]
+        holder.subtitle.text = song.subtitle
         holder.songs.text = song.name
         holder.image.load(song.imageUrl) {
             transformations(RoundedCornersTransformation(20f))

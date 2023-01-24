@@ -2,6 +2,7 @@ package com.example.shine.playlist_details
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -14,6 +15,10 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
 
     private val viewModel by viewModels<PlaylistDetailsViewModel>()
 
+    private val playlistId by lazy {
+        arguments?.getLong(PLAYLIST_ID_ARG) ?: error("THIS FRAGMENT NEEDS PLAYLIST ID ARG")
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -24,6 +29,17 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
         lifecycleScope.launch {
             viewModel.songs.collect { songs ->
                 adapter.submitList(songs)
+            }
+        }
+        viewModel.getSongs(playlistId)
+    }
+
+    companion object {
+        private const val PLAYLIST_ID_ARG = "playlist_id_arg"
+
+        fun newInstance(playlistId: Long): PlaylistDetailsFragment {
+            return PlaylistDetailsFragment().apply {
+                arguments = bundleOf(PLAYLIST_ID_ARG to playlistId)
             }
         }
     }

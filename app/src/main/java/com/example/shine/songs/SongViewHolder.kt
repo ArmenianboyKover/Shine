@@ -8,6 +8,6 @@ import com.example.shine.R
 
 class SongViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val songs: TextView = view.findViewById(R.id.songs)
-    val playlist: TextView = view.findViewById(R.id.playlists)
+    val subtitle: TextView = view.findViewById(R.id.subtitle)
     val image: ImageView = view.findViewById(R.id.image)
 }

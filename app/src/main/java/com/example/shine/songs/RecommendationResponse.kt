@@ -7,6 +7,7 @@ data class RecommendationResponse(
 data class SongResponse(
     val key: String?,
     val title: String?,
+    val subtitle: String?,
     val images: ImagesResponse?
 )
 

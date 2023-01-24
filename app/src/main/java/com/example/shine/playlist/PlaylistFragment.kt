@@ -20,7 +20,7 @@ class PlaylistFragment : Fragment(R.layout.fragment_playlists) {
 
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = PlaylistAdapter {
-            (activity as MainActivity).loadFragment(PlaylistDetailsFragment())
+            (activity as MainActivity).loadFragment(PlaylistDetailsFragment.newInstance(it.id))
         }
         recycler.adapter = adapter
 
