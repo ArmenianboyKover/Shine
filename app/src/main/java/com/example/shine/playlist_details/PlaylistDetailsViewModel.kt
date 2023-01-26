@@ -6,17 +6,23 @@ import com.example.shine.Constants
 import com.example.shine.Constants.RECOMMENDATION_PLAYLIST_ID
 import com.example.shine.songs.RecommendationResponse
 import com.example.shine.songs.Song
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Header
+import javax.inject.Inject
 
-class PlaylistDetailsViewModel : ViewModel() {
+@HiltViewModel
+class PlaylistDetailsViewModel @Inject constructor(
+    private val shazamApi: ShazamApi
+) : ViewModel() {
+
+    private val _isLoading = MutableStateFlow(true)
+    val isLoading = _isLoading.asStateFlow()
 
     private val _songs = MutableStateFlow<List<Song>>(emptyList())
     val songs = _songs.asStateFlow()
@@ -28,12 +34,6 @@ class PlaylistDetailsViewModel : ViewModel() {
     }
 
     private fun getRecommendations() {
-        val client = Retrofit.Builder()
-            .baseUrl("https://shazam.p.rapidapi.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val shazamApi = client.create(ShazamApi::class.java)
 
         viewModelScope.launch(Dispatchers.IO) {
             val result = shazamApi.getRecommendations(
@@ -49,6 +49,7 @@ class PlaylistDetailsViewModel : ViewModel() {
                     subtitle = it.subtitle.orEmpty(),
                 )
             }.orEmpty()
+            _isLoading.value = false
         }
     }
 }
