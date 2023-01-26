@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import com.example.shine.playlist.PlaylistFragment
 import com.example.shine.songs.SongsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {

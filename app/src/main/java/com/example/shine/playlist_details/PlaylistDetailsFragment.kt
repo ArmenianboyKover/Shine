@@ -2,6 +2,7 @@ package com.example.shine.playlist_details
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -9,8 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shine.R
 import com.example.shine.songs.SongsAdapter
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
 
     private val viewModel by viewModels<PlaylistDetailsViewModel>()
@@ -21,6 +24,15 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
+
+        lifecycleScope.launch {
+            viewModel.isLoading.collect {
+                progressBar.visibility = if (it) View.VISIBLE
+                else View.GONE
+            }
+        }
 
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = SongsAdapter()
