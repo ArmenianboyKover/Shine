@@ -29,8 +29,7 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
 
         lifecycleScope.launch {
             viewModel.isLoading.collect {
-                progressBar.visibility = if (it) View.VISIBLE
-                else View.GONE
+                progressBar.visibility = if (it) View.VISIBLE else View.GONE
             }
         }
 
