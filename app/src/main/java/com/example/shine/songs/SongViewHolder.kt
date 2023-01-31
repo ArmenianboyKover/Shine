@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shine.R
 
 class SongViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val songs: TextView = view.findViewById(R.id.songs)
-    val subtitle: TextView = view.findViewById(R.id.subtitle)
+    val name: TextView = view.findViewById(R.id.title)
+    val description: TextView = view.findViewById(R.id.description)
     val image: ImageView = view.findViewById(R.id.image)
 }

@@ -1,4 +1,4 @@
-package com.example.shine.songs
+package com.example.shine.history
 
 import android.os.Bundle
 import android.view.View
@@ -7,24 +7,24 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.shine.R
-import com.example.shine.databinding.FragmentSongsBinding
+import com.example.shine.databinding.FragmentHistoryBinding
 import kotlinx.coroutines.launch
 
-class SongsFragment : Fragment(R.layout.fragment_songs) {
+class HistoryFragment : Fragment(R.layout.fragment_history) {
 
-    private val viewBinding by viewBinding(FragmentSongsBinding::bind)
-
-    private val viewModel by viewModels<SongsViewModel>()
+    private val viewBinding by viewBinding(FragmentHistoryBinding::bind)
+    private val viewModel by viewModels<HistoryViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = SongsAdapter()
+        val adapter = HistoryAdapter()
+
         viewBinding.recyclerView.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.songs.collect { songs ->
-                adapter.submitList(songs)
+            viewModel.history.collect { historyItem ->
+                adapter.submitList(historyItem)
             }
         }
     }

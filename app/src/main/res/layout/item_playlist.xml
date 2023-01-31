@@ -7,7 +7,7 @@
     android:layout_marginTop="8dp">
 
     <ImageView
-        android:id="@+id/liked"
+        android:id="@+id/image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:scaleType="centerCrop"
@@ -23,9 +23,9 @@
         android:layout_marginTop="8dp"
         android:textColor="@color/white"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/liked"
-        app:layout_constraintStart_toStartOf="@+id/liked"
-        app:layout_constraintTop_toBottomOf="@id/liked"
+        app:layout_constraintEnd_toEndOf="@id/image"
+        app:layout_constraintStart_toStartOf="@+id/image"
+        app:layout_constraintTop_toBottomOf="@id/image"
         tools:text="Favorite"
         tools:textColor="@color/white" />
 
@@ -36,8 +36,8 @@
         android:layout_marginTop="4dp"
         android:textColor="@color/white"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@id/liked"
-        app:layout_constraintStart_toStartOf="@id/liked"
+        app:layout_constraintEnd_toEndOf="@id/image"
+        app:layout_constraintStart_toStartOf="@id/image"
         app:layout_constraintTop_toBottomOf="@id/title"
         tools:text="111Songs"
         tools:textColor="@color/white" />

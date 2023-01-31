@@ -20,8 +20,8 @@ class SongsViewModel : ViewModel() {
                 id = Random.nextLong().toString(),
                 name = "vasya",
                 imageUrl = "https://incrussia.ru/upload/resized/572c151849d7cadfd7cbccb840a84c4a.jpg",
-                subtitle = "AWEKLAWELAW"
-            ),
+                description = "AWEKLAWELAW"
+            )
         )
     }
 }

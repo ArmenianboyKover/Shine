@@ -13,20 +13,22 @@ class PlaylistAdapter(
 ) : ListAdapter<Playlist, PlaylistViewHolder>(PlaylistDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlaylistViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_playlist, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_playlist,
+            parent,
+            false
+        )
         return PlaylistViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: PlaylistViewHolder, position: Int) {
-        val song = currentList[position]
-        holder.title.text = song.title
-        holder.description.text = song.description
-        holder.liked.load(song.url) {
+        val playlist = currentList[position]
+        holder.title.text = playlist.title
+        holder.description.text = playlist.description
+        holder.image.load(playlist.url) {
             transformations(RoundedCornersTransformation(20f))
         }
-        holder.itemView.setOnClickListener { onItemClicked(song) }
+        holder.itemView.setOnClickListener { onItemClicked(playlist) }
     }
 }
 

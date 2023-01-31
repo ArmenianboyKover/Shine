@@ -46,7 +46,7 @@ class PlaylistDetailsViewModel @Inject constructor(
                     id = it.key.orEmpty(),
                     name = it.title.orEmpty(),
                     imageUrl = it.images?.background.orEmpty(),
-                    subtitle = it.subtitle.orEmpty(),
+                    description = it.subtitle.orEmpty(),
                 )
             }.orEmpty()
             _isLoading.value = false

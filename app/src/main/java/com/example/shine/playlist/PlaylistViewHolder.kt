@@ -9,5 +9,5 @@ import com.example.shine.R
 class PlaylistViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val title: TextView = view.findViewById(R.id.title)
     val description: TextView = view.findViewById(R.id.description)
-    val liked: ImageView = view.findViewById(R.id.liked)
+    val image: ImageView = view.findViewById(R.id.image)
 }
