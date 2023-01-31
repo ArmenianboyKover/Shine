@@ -2,12 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/songs"
+        android:id="@+id/history_song_name"
         android:icon="@drawable/ic_home"
         android:title="Songs" />
     <item
         android:id="@+id/playlists"
         android:icon="@drawable/ic_playlists"
         android:title="Playlists" />
+
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/ic_history"
+        android:title="History" />
 
 </menu>
