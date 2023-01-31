@@ -22,7 +22,7 @@ class HistoryFragment : Fragment(R.layout.fragment_history) {
 
         viewBinding.recyclerView.adapter = adapter
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.history.collect { historyItem ->
                 adapter.submitList(historyItem)
             }

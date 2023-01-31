@@ -24,7 +24,7 @@ class PlaylistFragment : Fragment(R.layout.fragment_playlists) {
         }
         recycler.adapter = adapter
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.playLists.collect { playLists ->
                 adapter.submitList(playLists)
             }

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/history_song_name"
+        android:id="@+id/songs"
         android:icon="@drawable/ic_home"
         android:title="Songs" />
     <item

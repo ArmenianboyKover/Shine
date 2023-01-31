@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         navigation.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.history_song_name -> {
+                R.id.songs -> {
                     loadFragment(SongsFragment())
                     true
                 }

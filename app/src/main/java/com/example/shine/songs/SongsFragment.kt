@@ -22,7 +22,7 @@ class SongsFragment : Fragment(R.layout.fragment_songs) {
         val adapter = SongsAdapter()
         viewBinding.recyclerView.adapter = adapter
 
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.songs.collect { songs ->
                 adapter.submitList(songs)
             }

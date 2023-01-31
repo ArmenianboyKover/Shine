@@ -8,6 +8,12 @@ class HistoryDiffUtil : DiffUtil.ItemCallback<HistoryItem>() {
             oldItem is HistoryItem.Song && newItem is HistoryItem.Song -> {
                 oldItem.id == newItem.id
             }
+            oldItem is HistoryItem.ShowList && newItem is HistoryItem.ShowList -> {
+                oldItem.text == newItem.text
+            }
+            oldItem is HistoryItem.Title && newItem is HistoryItem.Title -> {
+                oldItem.text == newItem.text
+            }
             else -> false
         }
     }
