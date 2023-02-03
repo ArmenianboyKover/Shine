@@ -2,8 +2,8 @@ package com.example.shine.playlist_details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shine.Constants
 import com.example.shine.Constants.RECOMMENDATION_PLAYLIST_ID
+import com.example.shine.data.HistoryRepository
 import com.example.shine.songs.RecommendationResponse
 import com.example.shine.songs.Song
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlaylistDetailsViewModel @Inject constructor(
-    private val shazamApi: ShazamApi
+    private val historyRepository: HistoryRepository
 ) : ViewModel() {
 
     private val _isLoading = MutableStateFlow(true)
@@ -34,23 +34,11 @@ class PlaylistDetailsViewModel @Inject constructor(
     }
 
     private fun getRecommendations() {
-
         viewModelScope.launch(Dispatchers.IO) {
-            val result = shazamApi.getRecommendations(
-                apiKey = Constants.API_KEY_HEADER,
-                hostName = Constants.HOST_NAME_HEADER
-            ).body()
-
-            _songs.value = result?.tracks?.map {
-                Song(
-                    id = it.key.orEmpty(),
-                    name = it.title.orEmpty(),
-                    imageUrl = it.images?.background.orEmpty(),
-                    description = it.subtitle.orEmpty(),
-                )
-            }.orEmpty()
-            _isLoading.value = false
+            val result = historyRepository.getSong()
+            _songs.value = result
         }
+        _isLoading.value = false
     }
 }
 
