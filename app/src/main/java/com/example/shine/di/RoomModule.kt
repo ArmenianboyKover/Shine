@@ -21,7 +21,7 @@ class RoomModule {
         return Room.databaseBuilder(
             context,
             HistoryDatabase::class.java,
-            "ROOM_DATABASE_NAME"
+            "SHINE_DATABASE "
         ).build()
     }
 

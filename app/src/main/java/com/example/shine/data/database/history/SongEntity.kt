@@ -18,7 +18,7 @@ data class SongEntity(
     val imageUrl: String
 )
 
-fun List<SongEntity>.mapToPresentation(): List<Song> { // map to presentation
+fun List<SongEntity>.mapToPresentation(): List<Song> {
     return this.map {
         Song(
             id = it.id,
