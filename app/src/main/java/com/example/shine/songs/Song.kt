@@ -7,6 +7,8 @@ data class Song(
     val name: String,
     val description: String,
     val imageUrl: String,
+    val trackLink: String,
+    val isDownloading: Boolean = false,
 )
 
 fun List<Song>.mapToEntity(): List<SongEntity> {
@@ -15,7 +17,8 @@ fun List<Song>.mapToEntity(): List<SongEntity> {
             id = it.id,
             description = it.description,
             name = it.name,
-            imageUrl = it.imageUrl
+            imageUrl = it.imageUrl,
+            trackLink = it.trackLink,
         )
     }
 }

@@ -34,7 +34,10 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
         }
 
         val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
-        val adapter = SongsAdapter()
+        val adapter = SongsAdapter {
+            viewModel.onSongClicked(it)
+        }
+
         recycler.adapter = adapter
 
         lifecycleScope.launch {

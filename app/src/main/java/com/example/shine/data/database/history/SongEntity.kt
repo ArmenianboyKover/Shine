@@ -15,7 +15,9 @@ data class SongEntity(
     @ColumnInfo(name = "DESCRIPTION")
     val description: String,
     @ColumnInfo(name = "IMAGE_URL")
-    val imageUrl: String
+    val imageUrl: String,
+    @ColumnInfo(name = "DOWNLOAD_LINK")
+    val trackLink: String,
 )
 
 fun List<SongEntity>.mapToPresentation(): List<Song> {
@@ -24,7 +26,9 @@ fun List<SongEntity>.mapToPresentation(): List<Song> {
             id = it.id,
             name = it.name,
             description = it.description,
-            imageUrl = it.imageUrl
+            imageUrl = it.imageUrl,
+            trackLink = it.trackLink,
+            isDownloading = false,
         )
     }
 }

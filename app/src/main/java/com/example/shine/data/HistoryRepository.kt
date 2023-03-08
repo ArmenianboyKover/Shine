@@ -1,19 +1,32 @@
 package com.example.shine.data
 
+import android.content.Context
 import android.util.Log
 import com.example.shine.Constants.API_KEY_HEADER
 import com.example.shine.Constants.HOST_NAME_HEADER
 import com.example.shine.data.database.history.SongsDao
 import com.example.shine.data.database.history.mapToPresentation
-import com.example.shine.playlist_details.ShazamApi
 import com.example.shine.songs.Song
 import com.example.shine.songs.mapToEntity
+import java.io.File
 import javax.inject.Inject
 
 class HistoryRepository @Inject constructor(
     private val songsDao: SongsDao,
-    private val shazamApi: ShazamApi
+    private val shazamApi: ShazamApi,
+    private val context: Context,
 ) {
+
+    suspend fun downloadSong(song: Song): File {
+        val file = File(context.cacheDir, "${song.id}.mp4")
+        if (file.exists()) {
+            return file
+        }
+        val result = shazamApi.downloadFile(song.trackLink)
+        val songBytes = result.body()!!.bytes()
+        file.writeBytes(songBytes)
+        return file
+    }
 
     suspend fun getSong(): List<Song> {
 
@@ -33,7 +46,9 @@ class HistoryRepository @Inject constructor(
                 id = it.key.orEmpty(),
                 name = it.title.orEmpty(),
                 imageUrl = it.images?.background.orEmpty(),
-                description = it.subtitle.orEmpty()
+                description = it.subtitle.orEmpty(),
+                trackLink = it.hub?.actions?.firstOrNull { it.uri != null }?.uri.orEmpty(),
+                isDownloading = false,
             )
         }.orEmpty()
 
