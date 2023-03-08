@@ -1,9 +1,11 @@
 package com.example.shine.di
 
-import com.example.shine.playlist_details.ShazamApi
+import android.content.Context
+import com.example.shine.data.ShazamApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -26,5 +28,11 @@ class AppModule {
     @Singleton
     fun provideShazamApi(retrofit: Retrofit): ShazamApi {
         return retrofit.create(ShazamApi::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideContext(@ApplicationContext context: Context): Context {
+        return context
     }
 }

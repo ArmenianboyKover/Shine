@@ -41,4 +41,14 @@
         tools:text="DJ LEHA PASKOLBAS"
         tools:textColor="@color/white" />
 
+    <ProgressBar
+        android:id="@+id/song_progress_bar"
+        style="@android:style/Widget.Holo.Light.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintEnd_toEndOf="@id/image"
+        app:layout_constraintStart_toStartOf="@id/image"
+        app:layout_constraintTop_toTopOf="@+id/image" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

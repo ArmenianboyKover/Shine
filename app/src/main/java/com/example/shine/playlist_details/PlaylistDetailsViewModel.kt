@@ -4,21 +4,19 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shine.Constants.RECOMMENDATION_PLAYLIST_ID
 import com.example.shine.data.HistoryRepository
-import com.example.shine.songs.RecommendationResponse
 import com.example.shine.songs.Song
+import com.example.shine.songs.SongsViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import retrofit2.Response
-import retrofit2.http.GET
-import retrofit2.http.Header
+import java.security.PrivateKey
 import javax.inject.Inject
 
 @HiltViewModel
 class PlaylistDetailsViewModel @Inject constructor(
-    private val historyRepository: HistoryRepository
+    private val historyRepository: HistoryRepository,
 ) : ViewModel() {
 
     private val _isLoading = MutableStateFlow(true)
@@ -40,13 +38,29 @@ class PlaylistDetailsViewModel @Inject constructor(
         }
         _isLoading.value = false
     }
-}
 
-interface ShazamApi {
+    fun onSongClicked(song: Song) {
+        changeSongLoadingState(song)
 
-    @GET("/songs/list-recommendations?key=484129036&locale=en-US")
-    suspend fun getRecommendations(
-        @Header("X-RapidAPI-Key") apiKey: String,
-        @Header("X-RapidAPI-Host") hostName: String
-    ): Response<RecommendationResponse>
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                historyRepository.downloadSong(song)
+            }.onFailure {
+                it.printStackTrace()
+            }.onSuccess {
+                //TODO PLAY TRACK
+            }
+            changeSongLoadingState(song)
+        }
+    }
+
+    private fun changeSongLoadingState(song: Song) {
+        _songs.value = _songs.value.map {
+            if (it.id == song.id) {
+                it.copy(isDownloading = it.isDownloading.not())
+            } else {
+                it
+            }
+        }
+    }
 }
