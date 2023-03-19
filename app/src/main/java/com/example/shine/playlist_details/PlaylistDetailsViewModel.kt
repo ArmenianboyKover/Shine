@@ -1,8 +1,5 @@
 package com.example.shine.playlist_details
 
-import android.content.Context
-import android.media.MediaPlayer
-import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shine.Constants.RECOMMENDATION_PLAYLIST_ID
@@ -18,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PlaylistDetailsViewModel @Inject constructor(
     private val historyRepository: HistoryRepository,
-    private val context: Context,
+    private val songPlayer: SongPlayer,
 ) : ViewModel() {
 
     private val _isLoading = MutableStateFlow(true)
@@ -26,9 +23,6 @@ class PlaylistDetailsViewModel @Inject constructor(
 
     private val _songs = MutableStateFlow<List<Song>>(emptyList())
     val songs = _songs.asStateFlow()
-
-    private var mediaPlayer = MediaPlayer()
-    private var currentSongId: String? = null
 
     fun getSongs(playlistId: Long) {
         if (playlistId == RECOMMENDATION_PLAYLIST_ID) {
@@ -47,26 +41,9 @@ class PlaylistDetailsViewModel @Inject constructor(
     fun onSongClicked(song: Song) {
         changeSongLoadingState(song)
 
-        if (song.id == currentSongId) {
-            if (mediaPlayer.isPlaying) mediaPlayer.pause() else mediaPlayer.start()
-            return
-        } else {
-            mediaPlayer.stop()
-            currentSongId = null
-        }
-
-        viewModelScope.launch(Dispatchers.IO) {
-            runCatching {
-                historyRepository.downloadSong(song)
-            }.onFailure {
-                it.printStackTrace()
-            }.onSuccess {
-                mediaPlayer.setDataSource(context, Uri.fromFile(it))
-                mediaPlayer.prepare()
-                currentSongId = song.id
-                mediaPlayer.start()
-            }
-            changeSongLoadingState(song)
+        when (songPlayer.pausePlayTrack(song)) {
+            SongPlayer.SongClickedState.SAME_TRACK_CLICKED -> return
+            else -> fetchAndPlaySong(song)
         }
     }
 
@@ -77,6 +54,19 @@ class PlaylistDetailsViewModel @Inject constructor(
             } else {
                 it
             }
+        }
+    }
+
+    private fun fetchAndPlaySong(song: Song) {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                historyRepository.downloadSong(song)
+            }.onFailure {
+                it.printStackTrace()
+            }.onSuccess {
+                songPlayer.setupAndRunSong(song, it)
+            }
+            changeSongLoadingState(song)
         }
     }
 }

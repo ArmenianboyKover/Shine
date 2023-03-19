@@ -18,7 +18,7 @@ class HistoryRepository @Inject constructor(
 ) {
 
     suspend fun downloadSong(song: Song): File {
-        val file = File(context.cacheDir, "${song.id}.mp4")
+        val file = File(context.cacheDir, "${song.id}.mp3")
         if (file.exists()) {
             return file
         }
