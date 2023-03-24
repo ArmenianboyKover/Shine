@@ -1,8 +1,8 @@
 package com.example.shine.songs
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import coil.load
@@ -25,8 +25,10 @@ class SongsAdapter(
         holder.image.load(song.imageUrl) {
             transformations(RoundedCornersTransformation(20f))
         }
-        holder.songProgressBar.visibility = if (song.isDownloading) View.VISIBLE else View.GONE
         holder.itemView.setOnClickListener { onItemClicked(song) }
+        holder.songProgressBar.isVisible = song.songState == SongState.IS_DOWNLOADING
+        holder.musicBar.isVisible = song.songState == SongState.IS_PLAYING
+        holder.pauseImage.isVisible = song.songState == SongState.IS_PAUSE
     }
 }
 

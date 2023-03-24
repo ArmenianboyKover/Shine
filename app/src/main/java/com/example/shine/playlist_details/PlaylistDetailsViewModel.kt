@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.shine.Constants.RECOMMENDATION_PLAYLIST_ID
 import com.example.shine.data.HistoryRepository
 import com.example.shine.songs.Song
+import com.example.shine.songs.SongState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -39,34 +40,42 @@ class PlaylistDetailsViewModel @Inject constructor(
     }
 
     fun onSongClicked(song: Song) {
-        changeSongLoadingState(song)
 
         when (songPlayer.pausePlayTrack(song)) {
-            SongPlayer.SongClickedState.SAME_TRACK_CLICKED -> return
+            SongPlayer.SongClickedState.SAME_TRACK_PAUSED -> changeSongState(
+                song,
+                SongState.IS_PAUSE
+            )
+            SongPlayer.SongClickedState.SAME_TRACK_PLAYING -> changeSongState(
+                song,
+                SongState.IS_PLAYING
+            )
             else -> fetchAndPlaySong(song)
         }
     }
 
-    private fun changeSongLoadingState(song: Song) {
+    private fun changeSongState(song: Song, songState: SongState) {
         _songs.value = _songs.value.map {
             if (it.id == song.id) {
-                it.copy(isDownloading = it.isDownloading.not())
+                it.copy(songState = songState)
             } else {
-                it
+                it.copy(songState = SongState.IS_READY_TO_PLAY)
             }
         }
     }
 
     private fun fetchAndPlaySong(song: Song) {
+        changeSongState(song, SongState.IS_DOWNLOADING)
         viewModelScope.launch(Dispatchers.IO) {
             runCatching {
                 historyRepository.downloadSong(song)
             }.onFailure {
                 it.printStackTrace()
+                changeSongState(song, SongState.IS_READY_TO_PLAY)
             }.onSuccess {
                 songPlayer.setupAndRunSong(song, it)
+                changeSongState(song, SongState.IS_PLAYING)
             }
-            changeSongLoadingState(song)
         }
     }
 }

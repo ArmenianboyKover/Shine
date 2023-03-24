@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.shine.songs.Song
+import com.example.shine.songs.SongState
 
 @Entity(tableName = "TABLE_RECOMMENDATIONS")
 data class SongEntity(
@@ -28,7 +29,7 @@ fun List<SongEntity>.mapToPresentation(): List<Song> {
             description = it.description,
             imageUrl = it.imageUrl,
             trackLink = it.trackLink,
-            isDownloading = false,
+            songState = SongState.IS_READY_TO_PLAY,
         )
     }
 }

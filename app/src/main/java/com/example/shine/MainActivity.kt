@@ -2,6 +2,7 @@ package com.example.shine
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.fragment.app.Fragment
 import com.example.shine.history.HistoryFragment
 import com.example.shine.playlist.PlaylistFragment
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         loadFragment(SongsFragment())
         val navigation = findViewById<BottomNavigationView>(R.id.bottom_navigation)

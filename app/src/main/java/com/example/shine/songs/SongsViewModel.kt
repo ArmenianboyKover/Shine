@@ -31,7 +31,7 @@ class SongsViewModel @Inject constructor(
                 imageUrl = "https://incrussia.ru/upload/resized/572c151849d7cadfd7cbccb840a84c4a.jpg",
                 description = "AWEKLAWELAW",
                 trackLink = "vwd",
-                isDownloading = false,
+                songState = SongState.IS_READY_TO_PLAY,
             )
         )
     }
@@ -39,7 +39,7 @@ class SongsViewModel @Inject constructor(
     fun onSongClicked(song: Song) {
         _songs.value = _songs.value.map {
             if (it.id == song.id) {
-                it.copy(isDownloading = it.isDownloading.not())
+                it.copy(songState = it.songState)
             } else {
                 it
             }

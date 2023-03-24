@@ -12,4 +12,6 @@ class SongViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val description: TextView = view.findViewById(R.id.description)
     val image: ImageView = view.findViewById(R.id.image)
     val songProgressBar: ProgressBar = view.findViewById(R.id.song_progress_bar)
+    val musicBar: ImageView = view.findViewById(R.id.musicBar)
+    val pauseImage: ImageView = view.findViewById(R.id.pauseImage)
 }
