@@ -25,6 +25,7 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
         val progressBar = view.findViewById<ProgressBar>(R.id.progress_bar)
 
         lifecycleScope.launch {
@@ -32,8 +33,6 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
                 progressBar.visibility = if (it) View.VISIBLE else View.GONE
             }
         }
-
-        val recycler = view.findViewById<RecyclerView>(R.id.recyclerView)
         val adapter = SongsAdapter {
             viewModel.onSongClicked(it)
         }
