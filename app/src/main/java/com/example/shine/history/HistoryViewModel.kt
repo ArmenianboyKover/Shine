@@ -21,22 +21,51 @@ class HistoryViewModel : ViewModel() {
             ),
             HistoryItem.Song(
                 id = Random.nextLong().toString(),
-                name = "Pasveti u tymani",
-                title = "Timati i dj leha",
-                imageUrl = "https://incrussia.ru/upload/resized/572c151849d7cadfd7cbccb840a84c4a.jpg"
+                name = "In The End",
+                title = "In The End",
+                imageUrl = "https://i.ytimg.com/vi/uXBzIPz9osY/maxresdefault.jpg"
             ), HistoryItem.Song(
                 id = Random.nextLong().toString(),
-                name = "Pasveti u tymani",
-                title = "Timati i dj leha",
-                imageUrl = "https://incrussia.ru/upload/resized/572c151849d7cadfd7cbccb840a84c4a.jpg"
+                name = "HAARPER",
+                title = "THE ALCHEMIST (PROD. RiCh LoSeR)",
+                imageUrl = "https://i1.sndcdn.com/artworks-gpB8SXqsvcyKjECS-a1gZOQ-t500x500.jpg"
             ), HistoryItem.Song(
                 id = Random.nextLong().toString(),
-                name = "Pasveti u tymani",
-                title = "Timati i dj leha",
-                imageUrl = "https://incrussia.ru/upload/resized/572c151849d7cadfd7cbccb840a84c4a.jpg"
+                name = "Oliver Tree",
+                title = "Hurt",
+                imageUrl = "https://i.ytimg.com/vi/NqpnbSFprB4/maxresdefault.jpg"
+            ),
+            HistoryItem.Title(
+                text = "Yesterday"
+            ),
+            HistoryItem.Song(
+                id = Random.nextLong().toString(),
+                name = "PAIN",
+                title = "Shut Your Mouth",
+                imageUrl = "https://i.ytimg.com/vi/B1GTk-FX7Ww/hqdefault.jpg"
+            ), HistoryItem.Song(
+                id = Random.nextLong().toString(),
+                name = "Eva Simons",
+                title = "Bludfire",
+                imageUrl = "https://i.ytimg.com/vi/ZsmTKrqpxdg/maxresdefault.jpg"
+            ), HistoryItem.Song(
+                id = Random.nextLong().toString(),
+                name = "Хаски",
+                title = "Бит шатает голову",
+                imageUrl = "https://i1.sndcdn.com/artworks-000242733230-xo3fnx-t500x500.jpg"
+            ), HistoryItem.Song(
+                id = Random.nextLong().toString(),
+                name = "Kordhell",
+                title = "Live Another Day",
+                imageUrl = "https://i1.sndcdn.com/artworks-xIKYFG7WxtMucLZg-WXHkEw-t500x500.jpg"
+            ), HistoryItem.Song(
+                id = Random.nextLong().toString(),
+                name = "RAM",
+                title = "В книге всё было по-другому (4 раунд 17 Независимый Баттл)",
+                imageUrl = "https://images.genius.com/8592d8b104e57d04077b0e6afd02f3a8.1000x1000x1.jpg"
             ),
             HistoryItem.ShowList(
-                text = "See all 283 played"
+                text = "See all 13 played"
             )
         )
     }
