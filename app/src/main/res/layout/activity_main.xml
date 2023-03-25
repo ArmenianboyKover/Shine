@@ -17,7 +17,7 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@color/cvet_cringe"
+        android:background="@color/btm_navigation"
         app:itemIconTint="@color/bottom_navigation_colors"
         app:itemTextColor="@color/bottom_navigation_colors"
         app:layout_constraintBottom_toBottomOf="parent"
