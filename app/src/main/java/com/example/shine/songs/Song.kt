@@ -8,7 +8,7 @@ data class Song(
     val description: String,
     val imageUrl: String,
     val trackLink: String,
-    val isDownloading: Boolean = false,
+    var songState: SongState
 )
 
 fun List<Song>.mapToEntity(): List<SongEntity> {
@@ -21,4 +21,11 @@ fun List<Song>.mapToEntity(): List<SongEntity> {
             trackLink = it.trackLink,
         )
     }
+}
+
+enum class SongState {
+    IS_PLAYING,
+    IS_DOWNLOADING,
+    IS_PAUSE,
+    IS_READY_TO_PLAY,
 }

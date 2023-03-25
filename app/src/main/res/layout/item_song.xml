@@ -51,4 +51,25 @@
         app:layout_constraintStart_toStartOf="@id/image"
         app:layout_constraintTop_toTopOf="@+id/image" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/musicBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintEnd_toEndOf="@id/image"
+        app:layout_constraintStart_toStartOf="@id/image"
+        app:layout_constraintTop_toTopOf="@+id/image"
+        app:lottie_autoPlay="true"
+        app:lottie_colorFilter="@color/white"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/music_bar" />
+
+    <ImageView
+        android:id="@+id/pauseImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_pause_music"
+        app:layout_constraintStart_toStartOf="@id/image"
+        app:layout_constraintTop_toTopOf="@id/image" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

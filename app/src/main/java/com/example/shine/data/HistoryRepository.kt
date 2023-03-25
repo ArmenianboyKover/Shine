@@ -7,6 +7,7 @@ import com.example.shine.Constants.HOST_NAME_HEADER
 import com.example.shine.data.database.history.SongsDao
 import com.example.shine.data.database.history.mapToPresentation
 import com.example.shine.songs.Song
+import com.example.shine.songs.SongState
 import com.example.shine.songs.mapToEntity
 import java.io.File
 import javax.inject.Inject
@@ -48,7 +49,7 @@ class HistoryRepository @Inject constructor(
                 imageUrl = it.images?.background.orEmpty(),
                 description = it.subtitle.orEmpty(),
                 trackLink = it.hub?.actions?.firstOrNull { it.uri != null }?.uri.orEmpty(),
-                isDownloading = false,
+                songState = SongState.IS_READY_TO_PLAY,
             )
         }.orEmpty()
 
