@@ -25,7 +25,9 @@ class PlaylistDetailsViewModel @Inject constructor(
     private val _songs = MutableStateFlow<List<Song>>(emptyList())
     val songs = _songs.asStateFlow()
 
-    fun getSongs(playlistId: Long) {
+    fun fetchSongs(playlistId: Long) {
+        if (_songs.value.isNotEmpty()) return
+
         if (playlistId == RECOMMENDATION_PLAYLIST_ID) {
             getRecommendations()
         }

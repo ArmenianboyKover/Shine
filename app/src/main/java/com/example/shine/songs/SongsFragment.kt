@@ -2,6 +2,7 @@ package com.example.shine.songs
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -22,7 +23,7 @@ class SongsFragment : Fragment(R.layout.fragment_songs) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = SongsAdapter {
-            viewModel.onSongClicked(it)
+            Toast.makeText(context, "Not implemented yet", Toast.LENGTH_SHORT).show()
         }
 
         viewBinding.recyclerView.adapter = adapter

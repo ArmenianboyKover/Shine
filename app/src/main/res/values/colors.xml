@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="bg_cringe">#AAADC4</color>
+    <color name="cvet_cringe">#8D909B</color>
 </resources>

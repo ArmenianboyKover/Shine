@@ -44,7 +44,7 @@ class PlaylistDetailsFragment : Fragment(R.layout.fragment_playlist_details) {
                 adapter.submitList(songs)
             }
         }
-        viewModel.getSongs(playlistId)
+        viewModel.fetchSongs(playlistId)
     }
 
     companion object {
