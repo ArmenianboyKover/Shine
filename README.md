@@ -1,5 +1,5 @@
 # Shine
-Shine is a simple music application..<br/>
+Shine is a simple music application.<br/>
 Uses public shazam api for backend. You can see it here - https://rapidapi.com/apidojo/api/shazam/.<br/>
 Currently implemented the functionality of recommendations.<br/>
 Added caching of songs in the local database.
