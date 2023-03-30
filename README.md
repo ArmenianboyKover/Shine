@@ -1,9 +1,8 @@
 # Shine
-Shine is a music listening application. Uses open shazam api. Currently implemented the functionality of recommendations.
-Added caching for the requested list of songs.
-
-Resource
-https://rapidapi.com/apidojo/api/shazam/
+Shine is a simple music listening application.<br/>
+Uses public shazam api for backend. You can see it here - https://rapidapi.com/apidojo/api/shazam/.<br/>
+Currently implemented the functionality of recommendations.<br/>
+Added caching of songs in the local database.
 
 ## Stack
 + MVVM Architecture
