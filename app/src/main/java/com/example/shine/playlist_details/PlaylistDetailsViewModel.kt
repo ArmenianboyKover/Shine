@@ -42,7 +42,6 @@ class PlaylistDetailsViewModel @Inject constructor(
     }
 
     fun onSongClicked(song: Song) {
-
         when (songPlayer.pausePlayTrack(song)) {
             SongPlayer.SongClickedState.SAME_TRACK_PAUSED -> changeSongState(
                 song,
