@@ -1,4 +1,4 @@
-package com.example.shine
+package com.example.shine.app
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

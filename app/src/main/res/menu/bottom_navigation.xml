@@ -4,7 +4,7 @@
     <item
         android:id="@+id/songs"
         android:icon="@drawable/ic_home"
-        android:title="Songs" />
+        android:title="@string/bottom_songs_item" />
     <item
         android:id="@+id/playlists"
         android:icon="@drawable/ic_playlists"

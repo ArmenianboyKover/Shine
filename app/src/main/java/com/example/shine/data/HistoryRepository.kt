@@ -2,10 +2,10 @@ package com.example.shine.data
 
 import android.content.Context
 import android.util.Log
-import com.example.shine.Constants.API_KEY_HEADER
-import com.example.shine.Constants.HOST_NAME_HEADER
-import com.example.shine.data.database.history.SongsDao
-import com.example.shine.data.database.history.mapToPresentation
+import com.example.shine.utils.Constants.API_KEY_HEADER
+import com.example.shine.utils.Constants.HOST_NAME_HEADER
+import com.example.shine.data.database.SongsDao
+import com.example.shine.data.database.mapToPresentation
 import com.example.shine.songs.Song
 import com.example.shine.songs.SongState
 import com.example.shine.songs.mapToEntity

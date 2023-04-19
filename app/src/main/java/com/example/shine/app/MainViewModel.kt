@@ -1,4 +1,4 @@
-package com.example.shine
+package com.example.shine.app
 
 import androidx.lifecycle.ViewModel
 

@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".ShineApp"
+        android:name=".app.ShineApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,9 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shine"
         tools:targetApi="31">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".app.MainActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".app.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>

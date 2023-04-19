@@ -2,7 +2,7 @@ package com.example.shine.playlist_details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.shine.Constants.RECOMMENDATION_PLAYLIST_ID
+import com.example.shine.utils.Constants.RECOMMENDATION_PLAYLIST_ID
 import com.example.shine.data.HistoryRepository
 import com.example.shine.songs.Song
 import com.example.shine.songs.SongState

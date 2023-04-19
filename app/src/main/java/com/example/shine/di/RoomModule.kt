@@ -3,7 +3,7 @@ package com.example.shine.di
 import android.content.Context
 import androidx.room.Room
 import com.example.shine.data.database.HistoryDatabase
-import com.example.shine.data.database.history.SongsDao
+import com.example.shine.data.database.SongsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

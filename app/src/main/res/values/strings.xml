@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Shine</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bottom_songs_item">Songs</string>
+    <string name="history_image">TODO</string>
+    <string name="splash_screen">TODO</string>
+    <string name="image_playlist">TODO</string>
+    <string name="image_song">TODO</string>
 </resources>

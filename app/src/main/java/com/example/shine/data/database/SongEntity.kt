@@ -1,4 +1,4 @@
-package com.example.shine.data.database.history
+package com.example.shine.data.database
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

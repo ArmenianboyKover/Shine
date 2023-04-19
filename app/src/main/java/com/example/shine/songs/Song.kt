@@ -1,6 +1,6 @@
 package com.example.shine.songs
 
-import com.example.shine.data.database.history.SongEntity
+import com.example.shine.data.database.SongEntity
 
 data class Song(
     val id: String,

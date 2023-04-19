@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shine.Constants
-import com.example.shine.MainActivity
+import com.example.shine.utils.Constants
+import com.example.shine.app.MainActivity
 import com.example.shine.R
 import com.example.shine.playlist_details.PlaylistDetailsFragment
 import kotlinx.coroutines.launch

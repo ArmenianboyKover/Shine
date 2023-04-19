@@ -1,7 +1,7 @@
 package com.example.shine.playlist
 
 import androidx.lifecycle.ViewModel
-import com.example.shine.Constants
+import com.example.shine.utils.Constants
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlin.random.Random

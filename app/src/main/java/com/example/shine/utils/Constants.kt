@@ -1,4 +1,4 @@
-package com.example.shine
+package com.example.shine.utils
 
 object Constants {
     const val RECOMMENDATION_PLAYLIST_ID = -1L

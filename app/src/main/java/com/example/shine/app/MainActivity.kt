@@ -1,9 +1,10 @@
-package com.example.shine
+package com.example.shine.app
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.shine.R
 import com.example.shine.history.HistoryFragment
 import com.example.shine.playlist.PlaylistFragment
 import com.example.shine.songs.SongsFragment
